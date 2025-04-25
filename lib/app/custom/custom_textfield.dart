@@ -86,8 +86,8 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
         filled: true,
         fillColor: widget.backgroundColor,
         hintText: widget.hintText,
-        hintStyle: const TextStyle(
-          color: Colors.blueGrey,
+        hintStyle: TextStyle(
+          color: Colors.grey.shade600,
           fontWeight: FontWeight.w500,
         ),
         prefixIcon: widget.prefixIcon,
@@ -123,7 +123,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(6),
-          borderSide: BorderSide(color: Colors.green, width: 1),
+          borderSide: BorderSide(color: Colors.amber, width: 1),
         ),
         errorText: widget.errorText,
       ),
