@@ -83,7 +83,7 @@ class RegisterView extends GetView<RegisterController> {
             CustomButton(
               onTap: () {
                 Navigator.of(context).push(
-                  MaterialPageRoute(builder: (context) => const LoginView()),
+                  MaterialPageRoute(builder: (context) => LoginView()),
                 );
               },
               text: "Register",

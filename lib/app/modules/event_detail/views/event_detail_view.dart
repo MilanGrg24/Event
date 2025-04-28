@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
-
 import '../controllers/event_detail_controller.dart';
 
 class EventDetailView extends GetView<EventDetailController> {
@@ -18,9 +16,6 @@ class EventDetailView extends GetView<EventDetailController> {
                 height: Get.size.height * 0.5,
                 decoration: BoxDecoration(
                   image: DecorationImage(
-                    // image: NetworkImage(
-                    //   AppApi.imageUrl + productDetailModel.image,
-                    // ),
                     image: AssetImage("assets/images/images.jpeg"),
                     fit: BoxFit.fill,
                   ),
@@ -68,6 +63,29 @@ class EventDetailView extends GetView<EventDetailController> {
                             Icon(Icons.location_on, size: 14),
                             Text(
                               "Pokhara",
+                              style: TextStyle(
+                                fontSize: 14,
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        Text(
+                          "Start Date:",
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                        Row(
+                          spacing: 6.0,
+                          children: [
+                            Text(
+                              "2025/04/26",
                               style: TextStyle(
                                 fontSize: 14,
                                 fontWeight: FontWeight.w600,
