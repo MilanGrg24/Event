@@ -1,3 +1,4 @@
+import 'package:eventapp/app/modules/register/views/register_view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../controllers/login_controller.dart';
@@ -198,6 +199,24 @@ class LoginView extends StatelessWidget {
                                 ),
                               ),
                             ),
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text("Don't have account?"),
+                              TextButton(
+                                onPressed: () {
+                                  Get.to(RegisterView());
+                                },
+                                child: Text(
+                                  "Register",
+                                  style: TextStyle(
+                                    color: Colors.deepPurple,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ),
+                            ],
                           ),
                         ],
                       ),

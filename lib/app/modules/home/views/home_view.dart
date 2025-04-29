@@ -100,7 +100,7 @@ class HomeView extends GetView<HomeController> {
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(8.0),
                                     image: DecorationImage(
-                                      image: NetworkImage("event.imageUrl"),
+                                      image: NetworkImage(event.imageUrl),
                                       fit: BoxFit.cover,
                                     ),
                                   ),
@@ -226,15 +226,16 @@ class HomeView extends GetView<HomeController> {
                                           ),
                                           GestureDetector(
                                             onTap: () {
+                                              Get.put(HomeController());
                                               HomeController homeController =
                                                   Get.find();
                                               homeController.eventDetailId =
                                                   event.eventCategoryId;
-                                              // Get.to( () => EventDetailView(title:categoryMode.categoryName),
-                                              //   binding: EventDetailBinding(),
-                                              // );
+
                                               Get.to(
-                                                () => EventDetailView(),
+                                                () => EventDetailView(
+                                                  eventId: event.id,
+                                                ),
                                                 binding: EventDetailBinding(),
                                               );
                                             },

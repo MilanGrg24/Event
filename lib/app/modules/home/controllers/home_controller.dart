@@ -37,7 +37,9 @@ class HomeController extends GetxController {
 
   void fetchEventId() async {
     try {
-      http.Response response = await AuthApiServices().eventIdDetail(eventDetailId!);
+      http.Response response = await AuthApiServices().eventIdDetail(
+        eventDetailId!,
+      );
       if (response.statusCode >= 200 && response.statusCode < 300) {
         var data = json.decode(response.body);
         List eventDetail = data['data'];
@@ -50,7 +52,7 @@ class HomeController extends GetxController {
       }
     } catch (e) {
       e.printError();
-      Helpers.showToastMessage(message: "Something went wrong");
+      // Helpers.showToastMessage(message: "");
     }
   }
 }

@@ -20,7 +20,7 @@ part 'app_routes.dart';
 class AppPages {
   AppPages._();
 
-  static const INITIAL = Routes.LOGIN;
+  static const INITIAL = Routes.DASHBOARD;
 
   static final routes = [
     GetPage(
@@ -36,12 +36,12 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.REGISTER,
-      page: () => const RegisterView(),
+      page: () => RegisterView(),
       binding: RegisterBinding(),
     ),
     GetPage(
       name: _Paths.EVENT_DETAIL,
-      page: () => const EventDetailView(),
+      page: () => EventDetailView(),
       binding: EventDetailBinding(),
     ),
 

@@ -1,35 +1,31 @@
 import 'dart:convert';
-
 import 'package:eventapp/app/models/event_details.dart';
 import 'package:get/get.dart';
-import 'package:get/get.dart' as http;
-
-import '../../../const/app_api.dart';
-import '../../../const/helpers.dart';
+import 'package:http/http.dart' as http;
 
 class EventDetailController extends GetxController {
-  // late EventsModel eventsModel;
-  // late int eventDetailId;
+  var isLoading = false.obs;
+  Event? eventDetail;
 
-  // fetchProductDetails() async {
-  //   try {
-  //     http.Response response = await AuthApiServices().eventDetail(eventDetailId);
-  //     var responseBody = jsonDecode(response.body);
-  //     if (response.statusCode! >= 200 && response.statusCode! < 300) {
-  //       eventsModel = EventsModel.eventsModelFromJson(
-  //         jsonEncode(responseBody["data"]),
-  //       );
-  //       update();
-  //     } else if (response.statusCode! >= 400 && response.statusCode! < 500) {
-  //       var responseBody = jsonDecode(response.body);
-  //       Helpers.showToastMessage(message: responseBody["message"]);
-  //     } else {
-  //       throw Exception();
-  //     }
-  //   } catch (e) {
-  //     e.printError();
-  //     Helpers.showToastMessage(message: "Something went wrong");
-  //   }
-  //   return eventsModel;
-  // }
+  Future<void> fetchEventDetail(int id) async {
+    isLoading.value = true;
+    try {
+      var response = await http.get(
+        Uri.parse('http://10.0.2.2:8000/api/events/$id'), // your API URL here
+      );
+
+      if (response.statusCode == 200) {
+        var jsonData = jsonDecode(response.body);
+        var data = jsonData['data']; // extract 'data' object
+        eventDetail = Event.fromJson(data);
+      } else {
+        Get.snackbar("Error", "Failed to load event: ${response.statusCode}");
+      }
+    } catch (e) {
+      Get.snackbar("Error", "Something went wrong: $e");
+    } finally {
+      isLoading.value = false;
+      update(); // rebuild GetBuilder
+    }
+  }
 }

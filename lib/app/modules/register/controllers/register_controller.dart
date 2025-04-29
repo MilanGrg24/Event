@@ -1,42 +1,49 @@
-import 'package:eventapp/app/models/user_model.dart';
+import 'dart:convert';
 import 'package:eventapp/app/modules/login/views/login_view.dart';
-import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
-import 'package:get/get.dart' as http;
-import '../../../const/app_api.dart';
-import '../../../const/helpers.dart';
+import 'package:http/http.dart' as http;
+import '../../../models/register_model.dart';
 
 class RegisterController extends GetxController {
-  // var ishidden = true.obs;
-  // TextEditingController emailTextEditingController = TextEditingController();
-  // TextEditingController passwordTextEditingController = TextEditingController();
-  // TextEditingController userNameTextEditingController = TextEditingController();
-  // TextEditingController contactTextEditingController = TextEditingController();
+  var isLoading = false.obs;
+  final name = ''.obs;
+  final email = ''.obs;
+  final phone = ''.obs;
+  final password = ''.obs;
+  final passwordConfirmation = ''.obs;
 
-  // register() async {
-  //   try {
-  //     UserModel registerModel = UserModel(
-  //         name: userNameTextEditingController.text,
-  //         email: emailTextEditingController.text,
-  //         password: passwordTextEditingController.text,
-  //         phone: contactTextEditingController.text);
+  Future<void> registerUser() async {
+    isLoading.value = true;
 
-  //     http.Response response =
-  //         await AuthApiServices().registerUser(registerModel);
-  //     if (response.statusCode !>= 200 && response.statusCode !< 300) {
-  //       Get.to(() => LoginView());
-  //       Helpers.showMessage(
-  //           message: "User Registered SucessFully", isError: false);
-  //     } else if (response.statusCode !>= 400 && response.statusCode !< 500) {
-  //       // ignore: unused_local_variable
-  //       // var responseBody = jsonDecode(response.body);
-  //       Helpers.showMessage(message: "Empty data in the field", isError: true);
-  //     } else {
-  //       throw Exception();
-  //     }
-  //   } catch (e) {
-  //     e.printError();
-  //     Helpers.showMessage(message: "Something went wrong ", isError: true);
-  //   }
-  // }
+    try {
+      var response = await http.post(
+        Uri.parse('http://10.0.2.2:8000/api/auth/register'),
+        headers: {'Content-Type': 'application/json'},
+        body: jsonEncode({
+          'name': name.value,
+          'email': email.value,
+          'phone': phone.value,
+          'password': password.value,
+          'password_confirmation': passwordConfirmation.value,
+        }),
+      );
+
+      if (response.statusCode == 200) {
+        var registerModel = RegisterModel.fromJson(jsonDecode(response.body));
+        if (registerModel.status == "Success") {
+          Get.snackbar("Success", registerModel.message);
+          // You can navigate to login page after successful registration
+          Get.to(LoginView());
+        } else {
+          Get.snackbar("Error", registerModel.message);
+        }
+      } else {
+        Get.snackbar("Error", "Server Error: ${response.statusCode}");
+      }
+    } catch (e) {
+      Get.snackbar("Error", "An error occurred: $e");
+    } finally {
+      isLoading.value = false;
+    }
+  }
 }
