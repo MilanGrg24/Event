@@ -1,4 +1,7 @@
+import 'package:eventapp/app/const/helpers.dart';
+import 'package:eventapp/app/modules/dashboard/views/dashboard_view.dart';
 import 'package:eventapp/app/modules/home/views/home_view.dart';
+import 'package:flutter/painting.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
@@ -42,14 +45,17 @@ class LoginController extends GetxController {
           loginResponse = LoginResponse.fromJson(jsonData);
 
           Get.snackbar(
+            backgroundColor: Color(0xFF673AB7),
             "Success",
             loginResponse!.message,
+            colorText: Color(0xFFFFFFFF),
             snackPosition: SnackPosition.BOTTOM,
           );
 
-          Get.offAll(HomeView());
+          Get.offAll(DashboardView());
         } else {
           Get.snackbar(
+            backgroundColor: Color(0xff0000),
             "Login Failed",
             jsonData['message'] ?? "Unknown error",
             snackPosition: SnackPosition.BOTTOM,

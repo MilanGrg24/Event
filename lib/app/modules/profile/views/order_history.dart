@@ -1,17 +1,16 @@
 import 'package:eventapp/app/modules/dashboard/views/dashboard_view.dart';
-import 'package:eventapp/app/modules/home/views/home_view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class OrderHistory extends StatelessWidget {
-  const OrderHistory({Key? key}) : super(key: key);
+  const OrderHistory({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.deepPurple,
-        title: Text("Order History"),
+        title: Text("Booking History", style: TextStyle(color: Colors.white)),
         centerTitle: true,
         leading: IconButton(
           onPressed: () {
@@ -52,7 +51,7 @@ class OrderHistory extends StatelessWidget {
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(6),
                               image: const DecorationImage(
-                                image: AssetImage('assets/images/event2.jpeg'),
+                                image: AssetImage('assets/images/fas.jpeg'),
                                 fit: BoxFit.fill,
                               ),
                             ),
@@ -69,38 +68,47 @@ class OrderHistory extends StatelessWidget {
                                     MainAxisAlignment.spaceEvenly,
                                 children: [
                                   Text(
-                                    "Live Music",
+                                    "Ace Of Model",
                                     style: TextStyle(
                                       fontSize: 16,
                                       fontWeight: FontWeight.bold,
                                     ),
                                   ),
+                                  // Text(
+                                  //   "Quantity: 1",
+                                  //   style: TextStyle(
+                                  //     fontSize: 16,
+                                  //     fontWeight: FontWeight.w500,
+                                  //   ),
+                                  // ),
                                   Text(
-                                    "Quantity: 1",
+                                    "Price: Rs.1000",
                                     style: TextStyle(
                                       fontSize: 16,
-                                      fontWeight: FontWeight.bold,
+                                      fontWeight: FontWeight.w300,
                                     ),
                                   ),
-                                  Text(
-                                    "Price: Rs.1200",
-                                    style: TextStyle(
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.bold,
-                                    ),
+                                  Row(
+                                    children: [
+                                      Icon(
+                                        Icons.location_pin,
+                                        color: Colors.grey,
+                                        size: 16,
+                                      ),
+                                      Text(
+                                        "Pokhara",
+                                        style: TextStyle(
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.w300,
+                                        ),
+                                      ),
+                                    ],
                                   ),
                                   Text(
-                                    "Total price: Rs.1200",
+                                    "Order date: 2025-05-8",
                                     style: TextStyle(
                                       fontSize: 16,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                  Text(
-                                    "Order date: 2023-04-17",
-                                    style: TextStyle(
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.bold,
+                                      fontWeight: FontWeight.w300,
                                     ),
                                   ),
                                 ],

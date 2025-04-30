@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../controllers/event_detail_controller.dart';
+import 'BookingFormScreen.dart';
 
 class EventDetailView extends GetView<EventDetailController> {
   final int? eventId;
@@ -30,11 +31,12 @@ class EventDetailView extends GetView<EventDetailController> {
               child: Column(
                 children: [
                   Container(
-                    height: Get.size.height * 0.5,
+                    height: Get.size.height * 0.6,
                     decoration: BoxDecoration(
                       image: DecorationImage(
+                        filterQuality: FilterQuality.high,
                         image: NetworkImage(event.imageUrl),
-                        fit: BoxFit.fill,
+                        fit: BoxFit.cover,
                       ),
                     ),
                     child: Stack(
@@ -80,11 +82,11 @@ class EventDetailView extends GetView<EventDetailController> {
                             Row(
                               spacing: 6.0,
                               children: [
-                                Icon(Icons.location_on, size: 14),
+                                Icon(Icons.location_on, size: 16),
                                 Text(
                                   event.country,
                                   style: TextStyle(
-                                    fontSize: 14,
+                                    fontSize: 16,
                                     fontWeight: FontWeight.w600,
                                   ),
                                 ),
@@ -92,15 +94,30 @@ class EventDetailView extends GetView<EventDetailController> {
                             ),
                           ],
                         ),
+                        SizedBox(height: 4.0),
                         Row(
                           children: [
                             Text(
-                              "Start Date:",
+                              "Category:",
                               style: TextStyle(
-                                fontSize: 18,
-                                fontWeight: FontWeight.w600,
+                                fontSize: 14,
+                                fontWeight: FontWeight.w500,
                               ),
                             ),
+                            Text(
+                              event.category.title,
+                              style: TextStyle(
+                                fontSize: 14,
+                                fontWeight: FontWeight.w400,
+                              ),
+                            ),
+                          ],
+                        ),
+                        SizedBox(height: 2.0),
+                        Row(
+                          children: [
+                            Icon(Icons.date_range, size: 16),
+                            SizedBox(width: 4.0),
                             Row(
                               spacing: 6.0,
                               children: [
@@ -108,22 +125,30 @@ class EventDetailView extends GetView<EventDetailController> {
                                   event.startDate,
                                   style: TextStyle(
                                     fontSize: 14,
-                                    fontWeight: FontWeight.w600,
+                                    fontWeight: FontWeight.w400,
                                   ),
                                 ),
                               ],
                             ),
                           ],
                         ),
+                        Center(
+                          child: Text(
+                            "-------------------------------------------------------------------------------------",
+                          ),
+                        ),
                         Text(
                           "Description:",
                           style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.w600,
+                            fontSize: 16,
+                            fontWeight: FontWeight.w500,
                           ),
                         ),
-                        Text(event.description),
-
+                        Text(
+                          event.description,
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
+                        ),
                         SizedBox(height: 4.0),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -148,7 +173,17 @@ class EventDetailView extends GetView<EventDetailController> {
                               ],
                             ),
                             GestureDetector(
-                              onTap: () {},
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder:
+                                        (_) => BookingFormScreen(
+                                          eventId: event.id,
+                                        ),
+                                  ),
+                                );
+                              },
                               child: Container(
                                 width: 100,
                                 decoration: BoxDecoration(

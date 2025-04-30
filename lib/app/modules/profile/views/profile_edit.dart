@@ -4,15 +4,15 @@ import 'package:get/get.dart';
 import '../../../custom/custom_textfield.dart';
 
 class EditProfile extends StatelessWidget {
-  const EditProfile({Key? key}) : super(key: key);
+  const EditProfile({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text("Edit Profile"),
-        backgroundColor: Colors.deepPurpleAccent,
+        title: Text("Edit Profile", style: TextStyle(color: Colors.white)),
+        backgroundColor: Colors.deepPurple,
       ),
       body: SingleChildScrollView(
         physics: const BouncingScrollPhysics(),
@@ -30,8 +30,8 @@ class EditProfile extends StatelessWidget {
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
                     image: DecorationImage(
-                      image: AssetImage("assets/images/event1.jpeg"),
-                      fit: BoxFit.fill,
+                      image: AssetImage("assets/images/event_logo.png"),
+                      fit: BoxFit.contain,
                     ),
                   ),
                   child: Stack(
@@ -45,10 +45,7 @@ class EditProfile extends StatelessWidget {
                 ),
                 SizedBox(height: 24),
                 CustomTextFormField(
-                  prefixIcon: Icon(
-                    Icons.person,
-                    color: Colors.deepPurpleAccent,
-                  ),
+                  prefixIcon: Icon(Icons.person, color: Colors.deepPurple),
                   hintText: 'Enter your Full name',
                   // fieldKey: _emailFormFieldKey,
                   // controller: loginController.emailTextEditingController,
@@ -61,7 +58,7 @@ class EditProfile extends StatelessWidget {
                 CustomTextFormField(
                   prefixIcon: Icon(
                     Icons.mail_rounded,
-                    color: Colors.deepPurpleAccent,
+                    color: Colors.deepPurple,
                   ),
                   hintText: 'Enter your email',
                   // fieldKey: _emailFormFieldKey,
@@ -75,7 +72,7 @@ class EditProfile extends StatelessWidget {
                 CustomTextFormField(
                   prefixIcon: Icon(
                     Icons.contact_phone,
-                    color: Colors.deepPurpleAccent,
+                    color: Colors.deepPurple,
                   ),
                   hintText: 'Enter your contact',
                   // fieldKey: _emailFormFieldKey,
@@ -94,7 +91,7 @@ class EditProfile extends StatelessWidget {
                     height: Get.size.height * 0.07,
                     width: Get.size.width * 0.9,
                     decoration: BoxDecoration(
-                      color: Colors.deepPurpleAccent,
+                      color: Colors.deepPurple,
                       borderRadius: BorderRadius.circular(12),
                     ),
                     child: Center(

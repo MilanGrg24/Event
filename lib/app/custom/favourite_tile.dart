@@ -2,17 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class FavouriteTile extends StatelessWidget {
-  FavouriteTile({
-    Key? key,
+  const FavouriteTile({
+    super.key,
     required this.name,
     required this.price,
-    required this.image,
+    this.image,
     this.onTap,
     this.favoriteID,
-  }) : super(key: key);
+  });
   final String name;
   final String price;
-  final String image;
+  final String? image;
   final VoidCallback? onTap;
   final int? favoriteID;
 
@@ -29,19 +29,22 @@ class FavouriteTile extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 6.0),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             Container(
               height: Get.size.height * 0.2,
-              width: Get.size.height * 0.2,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(6),
+                // image: DecorationImage(
+                //   image: AssetImage('assets/images/event3.jpeg'),
+                //   fit: BoxFit.fill,
+                // ),
                 image: DecorationImage(
-                  image: AssetImage(image),
+                  image: AssetImage("assets/images.event1.jpeg"),
                   fit: BoxFit.fill,
                 ),
               ),
               child: Stack(
-                alignment: Alignment.topRight,
                 children: [
                   IconButton(
                     splashRadius: 2,
@@ -70,32 +73,40 @@ class FavouriteTile extends StatelessWidget {
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      GestureDetector(
-                        onTap: onTap,
-                        child: Container(
-                          height: 35,
-                          width: 35,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(6),
-                            color: Colors.deepPurpleAccent,
+                    ],
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        "Rs. "
+                        "$price",
+                        style: TextStyle(
+                          color: Colors.grey,
+                          fontSize: 16,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                      ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          disabledBackgroundColor: Colors.deepPurple,
+                          backgroundColor: Colors.deepPurple,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8),
                           ),
-                          child: const Icon(
-                            Icons.shopping_cart,
+                          minimumSize: const Size(60, 30),
+                        ),
+                        onPressed: onTap,
+                        child: const Text(
+                          "View",
+                          style: TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.bold,
                             color: Colors.white,
-                            size: 20,
                           ),
                         ),
                       ),
                     ],
-                  ),
-                  Text(
-                    "Rs. "
-                    "${price}",
-                    style: TextStyle(
-                      color: Colors.grey,
-                      fontSize: 16,
-                      fontWeight: FontWeight.w500,
-                    ),
                   ),
                 ],
               ),

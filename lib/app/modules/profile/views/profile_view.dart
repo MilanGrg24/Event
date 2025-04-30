@@ -43,73 +43,62 @@ class ProfileView extends GetView<ProfileController> {
                   ],
                 ),
                 const CircleAvatar(
-                  radius: 80,
+                  radius: 60,
                   backgroundImage: AssetImage(
-                    "assets/images/event1.jpeg",
+                    "assets/images/event_logo.png",
                     bundle: null,
                   ),
                 ),
+                SizedBox(height: 6.0),
                 const Text(
                   "Sejan",
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                 ),
                 const Divider(thickness: 1),
                 ListTile(
                   onTap: () {
                     Get.to(() => const EditProfile());
                   },
-                  leading: Icon(Icons.edit, color: Colors.deepPurpleAccent),
+                  leading: Icon(Icons.edit, color: Colors.deepPurple),
                   title: const Text(
                     "Edit Profile",
                     style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                   ),
-                  trailing: Icon(
-                    Icons.arrow_right,
-                    color: Colors.deepPurpleAccent,
-                  ),
+                  trailing: Icon(Icons.arrow_right, color: Colors.deepPurple),
                 ),
                 ListTile(
                   onTap: () {
                     Get.toNamed("favourite");
                   },
-                  leading: Icon(Icons.favorite, color: Colors.deepPurpleAccent),
+                  leading: Icon(Icons.favorite, color: Colors.deepPurple),
                   title: const Text(
                     "Favourite",
                     style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                   ),
-                  trailing: Icon(
-                    Icons.arrow_right,
-                    color: Colors.deepPurpleAccent,
-                  ),
+                  trailing: Icon(Icons.arrow_right, color: Colors.deepPurple),
                 ),
                 ListTile(
                   onTap: () {
                     Get.to(() => OrderHistory());
                   },
-                  leading: Icon(Icons.history, color: Colors.deepPurpleAccent),
+                  leading: Icon(Icons.history, color: Colors.deepPurple),
                   title: const Text(
-                    "Order History",
+                    "Booking History",
                     style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                   ),
-                  trailing: Icon(
-                    Icons.arrow_right,
-                    color: Colors.deepPurpleAccent,
-                  ),
+                  trailing: Icon(Icons.arrow_right, color: Colors.deepPurple),
                 ),
-                ListTile(
-                  leading: Icon(
-                    Icons.info_outline_rounded,
-                    color: Colors.deepPurpleAccent,
-                  ),
-                  title: const Text(
-                    "About Us",
-                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                  ),
-                  trailing: Icon(
-                    Icons.arrow_right,
-                    color: Colors.deepPurpleAccent,
-                  ),
-                ),
+                // ListTile(
+                //   leading: Icon(
+                //     Icons.info_outline_rounded,
+                //     color: Colors.deepPurple,
+                //   ),
+                //   title: const Text(
+                //     "About Us",
+                //     style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                //   ),
+                //   trailing: Icon(Icons.arrow_right, color: Colors.deepPurple),
+                // ),
                 ListTile(
                   onTap: () {
                     showDialog(
@@ -131,7 +120,7 @@ class ProfileView extends GetView<ProfileController> {
                               child: Text(
                                 'No',
                                 style: TextStyle(
-                                  color: Colors.deepPurpleAccent,
+                                  color: Colors.deepPurple,
                                   fontSize: 18,
                                   fontWeight: FontWeight.bold,
                                 ),
@@ -150,7 +139,7 @@ class ProfileView extends GetView<ProfileController> {
                                 'Yes',
                                 style: TextStyle(
                                   fontSize: 18,
-                                  color: Colors.deepPurpleAccent,
+                                  color: Colors.deepPurple,
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
@@ -160,15 +149,12 @@ class ProfileView extends GetView<ProfileController> {
                       },
                     );
                   },
-                  leading: Icon(Icons.lock, color: Colors.deepPurpleAccent),
+                  leading: Icon(Icons.lock, color: Colors.deepPurple),
                   title: const Text(
                     "Logout",
                     style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                   ),
-                  trailing: Icon(
-                    Icons.arrow_right,
-                    color: Colors.deepPurpleAccent,
-                  ),
+                  trailing: Icon(Icons.arrow_right, color: Colors.deepPurple),
                 ),
               ],
             ),

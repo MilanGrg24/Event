@@ -2,7 +2,6 @@ import 'package:eventapp/app/modules/home/bindings/home_binding.dart';
 import 'package:eventapp/app/modules/home/views/home_view.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import '../../../models/user_model.dart';
 import 'secure_storage_services.dart';
 
 class UserService extends GetxService {

@@ -1,37 +1,37 @@
 class Event {
   final int id;
   final String title;
-  final String slug;
-  final int eventCategoryId;
+  final String? slug;
+  final int? eventCategoryId;
   final String description;
   final String imageUrl;
-  final String imagePublicId;
+  final String? imagePublicId;
   final double price;
   final String country;
-  final int status;
+  final int? status;
   final String startDate;
-  final String endDate;
+  final String? endDate;
   final int totalSpace;
-  final String createdAt;
-  final String updatedAt;
+  final String? createdAt;
+  final String? updatedAt;
   final Category category;
 
   Event({
     required this.id,
     required this.title,
-    required this.slug,
-    required this.eventCategoryId,
+    this.slug,
+    this.eventCategoryId,
     required this.description,
     required this.imageUrl,
-    required this.imagePublicId,
+    this.imagePublicId,
     required this.price,
     required this.country,
-    required this.status,
+    this.status,
     required this.startDate,
-    required this.endDate,
+    this.endDate,
     required this.totalSpace,
-    required this.createdAt,
-    required this.updatedAt,
+    this.createdAt,
+    this.updatedAt,
     required this.category,
   });
 
@@ -61,15 +61,9 @@ class Category {
   final int id;
   final String title;
 
-  Category({
-    required this.id,
-    required this.title,
-  });
+  Category({required this.id, required this.title});
 
   factory Category.fromJson(Map<String, dynamic> json) {
-    return Category(
-      id: json['id'],
-      title: json['title'],
-    );
+    return Category(id: json['id'], title: json['title']);
   }
 }
