@@ -1,11 +1,13 @@
 import 'package:get/get.dart';
 
 class FavouriteController extends GetxController {
-  //TODO: Implement FavouriteController
+  var favouriteList = [].obs;
 
-  final count = 0.obs;
+  void addToFavourite(dynamic event) {
+    favouriteList.add(event);
+  }
 
-
-
-  void increment() => count.value++;
+  void removeFromFavourite(dynamic event) {
+    favouriteList.remove(event);
+  }
 }

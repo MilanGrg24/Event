@@ -1,15 +1,16 @@
-import 'package:eventapp/app/const/helpers.dart';
 import 'package:eventapp/app/modules/dashboard/views/dashboard_view.dart';
-import 'package:eventapp/app/modules/home/views/home_view.dart';
 import 'package:flutter/painting.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import '../../../models/login_response_model.dart';
+import '../../dashboard/controllers/dashboard_controller.dart';
 
 class LoginController extends GetxController {
   var isLoading = false.obs;
   LoginResponse? loginResponse;
+  final storage = GetStorage();
 
   Future<void> login(String email, String password) async {
     if (email.isEmpty || !GetUtils.isEmail(email)) {
@@ -43,6 +44,8 @@ class LoginController extends GetxController {
 
         if (jsonData['status'] == true) {
           loginResponse = LoginResponse.fromJson(jsonData);
+          // Save token
+          storage.write('token', loginResponse!.token);
 
           Get.snackbar(
             backgroundColor: Color(0xFF673AB7),
@@ -51,8 +54,9 @@ class LoginController extends GetxController {
             colorText: Color(0xFFFFFFFF),
             snackPosition: SnackPosition.BOTTOM,
           );
-
-          Get.offAll(DashboardView());
+          Get.put(DashboardController());
+          Get.offAll(() => DashboardView());
+          update();
         } else {
           Get.snackbar(
             backgroundColor: Color(0xff0000),

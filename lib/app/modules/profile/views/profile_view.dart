@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 
 import '../../login/views/login_view.dart';
 import '../controllers/profile_controller.dart';
@@ -88,17 +89,6 @@ class ProfileView extends GetView<ProfileController> {
                   ),
                   trailing: Icon(Icons.arrow_right, color: Colors.deepPurple),
                 ),
-                // ListTile(
-                //   leading: Icon(
-                //     Icons.info_outline_rounded,
-                //     color: Colors.deepPurple,
-                //   ),
-                //   title: const Text(
-                //     "About Us",
-                //     style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                //   ),
-                //   trailing: Icon(Icons.arrow_right, color: Colors.deepPurple),
-                // ),
                 ListTile(
                   onTap: () {
                     showDialog(
@@ -128,12 +118,9 @@ class ProfileView extends GetView<ProfileController> {
                             ),
                             MaterialButton(
                               onPressed: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => LoginView(),
-                                  ),
-                                );
+                                final storage = GetStorage();
+                                storage.remove('token'); // Clear token
+                                Get.offAll(() => LoginView());
                               },
                               child: Text(
                                 'Yes',

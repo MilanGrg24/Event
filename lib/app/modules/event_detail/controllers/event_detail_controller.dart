@@ -18,6 +18,7 @@ class EventDetailController extends GetxController {
         var jsonData = jsonDecode(response.body);
         var data = jsonData['data']; // extract 'data' object
         eventDetail = Event.fromJson(data);
+        update();
       } else {
         Get.snackbar("Error", "Failed to load event: ${response.statusCode}");
       }
@@ -28,4 +29,6 @@ class EventDetailController extends GetxController {
       update(); // rebuild GetBuilder
     }
   }
+
+  
 }

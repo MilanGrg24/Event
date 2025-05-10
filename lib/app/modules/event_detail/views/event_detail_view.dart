@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
+import '../../login/views/login_view.dart';
 import '../controllers/event_detail_controller.dart';
 import 'BookingFormScreen.dart';
 
@@ -174,16 +176,21 @@ class EventDetailView extends GetView<EventDetailController> {
                             ),
                             GestureDetector(
                               onTap: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder:
-                                        (_) => BookingFormScreen(
-                                          eventId: event.id,
-                                        ),
-                                  ),
-                                );
+                                final token = GetStorage().read('token');
+
+                                if (token == null) {
+                                  Get.snackbar(
+                                    "Login Required",
+                                    "Please login to book this event",
+                                  );
+                                  Get.to(() => LoginView());
+                                } else {
+                                  Get.to(
+                                    () => BookingFormScreen(eventId: event.id),
+                                  );
+                                }
                               },
+
                               child: Container(
                                 width: 100,
                                 decoration: BoxDecoration(

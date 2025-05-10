@@ -1,7 +1,7 @@
 class User {
   final int id;
   final String name;
-  final String? phone;
+  final String phone;
   final String email;
   final int role;
   final String? profilePicture;
@@ -12,7 +12,7 @@ class User {
   User({
     required this.id,
     required this.name,
-    this.phone,
+    required this.phone,
     required this.email,
     required this.role,
     this.profilePicture,

@@ -19,9 +19,7 @@ class DashboardView extends GetView<DashboardController> {
               index: controller.tabIndex,
               children: [
                 HomeView(),
-                // CategoryView(),
                 FavouriteView(),
-                // CartView(),
                 ProfileView(),
               ],
             ),
@@ -38,9 +36,7 @@ class DashboardView extends GetView<DashboardController> {
             showUnselectedLabels: false,
             items: [
               bottomNavigationBarItem(icon: Icons.home, label: 'Home'),
-              // bottomNavigationBarItem(icon: Icons.category, label: 'Category'),
               bottomNavigationBarItem(icon: Icons.favorite, label: 'Favourite'),
-              // bottomNavigationBarItem(icon: Icons.shopping_cart, label: 'Cart'),
               bottomNavigationBarItem(
                 icon: Icons.person_sharp,
                 label: 'Profile',

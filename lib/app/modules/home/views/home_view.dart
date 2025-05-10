@@ -4,11 +4,15 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
+import '../../favourite/controllers/favourite_controller.dart';
 import '../controllers/home_controller.dart';
 
 class HomeView extends GetView<HomeController> {
   HomeView({super.key});
   final HomeController homeController = Get.put(HomeController());
+  final FavouriteController favouriteController = Get.put(
+    FavouriteController(),
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -135,6 +139,8 @@ class HomeView extends GetView<HomeController> {
                                   color: Colors.white,
                                 ),
                                 onPressed: () {
+                                  favouriteController.addToFavourite(event);
+
                                   Fluttertoast.showToast(
                                     msg: "Added to Favourite",
                                     toastLength: Toast.LENGTH_SHORT,

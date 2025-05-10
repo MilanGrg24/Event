@@ -9,6 +9,7 @@ class HomeController extends GetxController {
   var isLoading = true.obs;
   var eventList = <Event>[].obs;
   int? eventDetailId;
+  
 
   @override
   void onInit() {
@@ -25,6 +26,7 @@ class HomeController extends GetxController {
         var data = json.decode(response.body);
         List events = data['data'];
         eventList.value = events.map((e) => Event.fromJson(e)).toList();
+        update();
       } else {
         Get.snackbar('Error', 'Failed to load events');
       }
@@ -44,6 +46,7 @@ class HomeController extends GetxController {
         var data = json.decode(response.body);
         List eventDetail = data['data'];
         eventList.value = eventDetail.map((e) => Event.fromJson(e)).toList();
+        update();
       } else if (response.statusCode >= 400 && response.statusCode < 500) {
         var responseBody = jsonDecode(response.body);
         Helpers.showToastMessage(message: responseBody["message"]);
