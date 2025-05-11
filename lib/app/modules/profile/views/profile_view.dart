@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
-
 import '../../login/views/login_view.dart';
 import '../controllers/profile_controller.dart';
 import 'order_history.dart';

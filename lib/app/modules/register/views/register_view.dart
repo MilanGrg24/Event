@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
-
 import '../../../custom/custom_button.dart';
 import '../../../custom/custom_textfield.dart';
-import '../../login/views/login_view.dart';
 import '../controllers/register_controller.dart';
 
 class RegisterView extends GetView<RegisterController> {
@@ -14,7 +11,7 @@ class RegisterView extends GetView<RegisterController> {
   final RxBool isPasswordHidden = true.obs;
   @override
   Widget build(BuildContext context) {
-    final _labelStyle = TextStyle(
+    final labelStyle = TextStyle(
       fontWeight: FontWeight.w700,
       color: Colors.deepPurple,
       fontSize: 14,
@@ -41,7 +38,7 @@ class RegisterView extends GetView<RegisterController> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           // Full Name
-                          Text("Full name:", style: _labelStyle),
+                          Text("Full name:", style: labelStyle),
                           CustomTextFormField(
                             backgroundColor: Colors.white12,
                             prefixIcon: Icon(
@@ -59,7 +56,7 @@ class RegisterView extends GetView<RegisterController> {
                           SizedBox(height: 8),
 
                           // Email
-                          Text("Email Address:", style: _labelStyle),
+                          Text("Email Address:", style: labelStyle),
                           CustomTextFormField(
                             backgroundColor: Colors.white12,
                             prefixIcon: Icon(
@@ -70,17 +67,19 @@ class RegisterView extends GetView<RegisterController> {
                             onChanged:
                                 (value) => controller.email.value = value,
                             validator: (value) {
-                              if (value == null || value.isEmpty)
+                              if (value == null || value.isEmpty) {
                                 return 'Email is required';
-                              if (!GetUtils.isEmail(value))
+                              }
+                              if (!GetUtils.isEmail(value)) {
                                 return 'Enter a valid email';
+                              }
                               return null;
                             },
                           ),
                           SizedBox(height: 8),
 
                           // Phone
-                          Text("Phone Number:", style: _labelStyle),
+                          Text("Phone Number:", style: labelStyle),
                           CustomTextFormField(
                             backgroundColor: Colors.white12,
                             prefixIcon: Icon(
@@ -99,7 +98,7 @@ class RegisterView extends GetView<RegisterController> {
                           SizedBox(height: 8),
 
                           // Password
-                          Text("Password:", style: _labelStyle),
+                          Text("Password:", style: labelStyle),
                           Obx(
                             () => CustomTextFormField(
                               backgroundColor: Colors.white12,
@@ -129,7 +128,7 @@ class RegisterView extends GetView<RegisterController> {
                           SizedBox(height: 8),
 
                           // Confirm Password
-                          Text("Confirm Password:", style: _labelStyle),
+                          Text("Confirm Password:", style: labelStyle),
                           Obx(
                             () => CustomTextFormField(
                               backgroundColor: Colors.white12,

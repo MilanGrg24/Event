@@ -10,34 +10,11 @@ class AppApi {
 
 class AuthApis {
   AuthApis();
-  String get register => "$baseUrl/api/auth/register";
-  String get login => "$baseUrl/api/auth/login";
   String get eventDetails => "$baseUrl/api/events";
 }
 
 class AuthApiServices {
   var client = http.Client();
-
-
-  //   Future registerUser(Usermodel usermodel) async {
-  //   try {
-  //     Uri url = Uri.parse(AuthApis().register);
-  //     var response = await client.post(
-  //       url,
-  //       headers: {
-  //         'Content-Type': 'application/json',
-  //       },
-  //       body: UserModel.registerModelToJson(userModel),
-  //     );
-  //     return response;
-  //   } on SocketException {
-  //     return Future.error('No Internet connection');
-  //   } on FormatException {
-  //     return Future.error('Bad response format');
-  //   } on Exception catch (error) {
-  //     return Future.error(error.toString());
-  //   }
-  // }
 
   Future event() async {
     try {
